@@ -5,8 +5,8 @@ const { sendMessage } =require("./utlis/send-message")
 const { welcomeMessage, listOptions } = require("./utlis/default")
 require('dotenv').config()
 const fs = require('fs');
-const { saveLeads } = require("./controller/lead")
-const { getOrder, getProduits } = require("./utlis/options")
+const { saveLeads, getLang } = require("./controller/lead")
+const { getOrder, getProduits, getFaq, programmeLesAffre } = require("./utlis/options")
 app.use(express.json())
 
 
@@ -49,6 +49,21 @@ app.post("/chat-bot",(req,res)=>{
                             sendMessage({...option,"message_type": "custom","custom": getProduits(lang)})
                         })
                         break;
+                    case "3":
+                        getLang(message.from,({lang}) => {
+                            sendMessage({...option,"message_type": "custom","custom": getFaq(lang)})
+                        })
+                        break;
+                    case "4":
+                        programmeLesAffre(message.from,({lang}) => {
+                            sendMessage({...option,"message_type": "custom","custom": getFaq(lang)})
+                        })
+                        break;
+                    case "5":
+                        getReclamation(message.from,({text,lang}) => {
+                            sendMessage({...option,"message_type": "text","text": text})
+                        })
+                    break;
                 
                     default:
                         break;

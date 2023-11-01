@@ -16,7 +16,7 @@ exports.sendMessage=(data)=>{
     };
     axios.post('https://messages-sandbox.nexmo.com/v1/messages', data, config)
     .then((response) => {
-    //    console.log(response)
+       console.log(response)
     })
     .catch((error) => {
         console.error(error);
