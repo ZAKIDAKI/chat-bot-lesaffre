@@ -5,13 +5,29 @@ const { sendMessage } =require("./utlis/send-message")
 const { welcomeMessage } = require("./utlis/default")
 require('dotenv').config()
 const fs = require('fs');
+const { PrismaClient } = require("@prisma/client")
+const prisma = new PrismaClient()
 
 
-app.get("",(req,res)=>{
+
+app.get("/",async (req,res)=>{
+    const response=await prisma.lead.create({
+        data:{
+            phone:"212621586010",
+            lang:"FR",
+            profileName:"ZAKARIA MOUCHTATI"
+        }
+    })
 
     res.send("CHAT BOT LESAFFRE").status(200)
 })
 
+
+app.get("/leads",async (req,res)=>{
+
+    const leads=await prisma.lead.findMany();
+    res.json({"leads":leads})
+})
 
 app.post("/chat-bot",(req,res)=>{
 
@@ -35,10 +51,8 @@ app.post("/chat-bot",(req,res)=>{
 })
 
 
-app.listen(3000,()=>console.log("App Started !"))
+app.listen(5000,()=>console.log("App Started !"))
 
-
-exports.app;
 
 
 function logToFile(message) {
