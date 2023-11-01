@@ -91,7 +91,7 @@ connection.connect((err) => {
 
 
 app.get("/",async (req,res)=>{
-    res.send("CHAT BOT LESAFFRE").status(200)
+    res.send("CHAT BOT LESAFFREcasad").status(200)
 })
 
 app.listen(5000,()=>console.log("App Started !"))
