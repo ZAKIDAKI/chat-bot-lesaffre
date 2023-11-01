@@ -10,7 +10,7 @@ const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient({
     datasources: {
       db: {
-        url: `mysql://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@${process.env.HOST}/${process.env.DATABASE}`,
+        url: "mysql://pro:}r>7KYPWOV+EVOZK@localhost:3306/chat_bot_BR_BREAD",
       },
     },
   })
