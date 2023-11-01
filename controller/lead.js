@@ -5,7 +5,7 @@ exports.saveLeads = (lead) => {
     let {profileName,from,lang = "fr"} = lead
 
     let req="INSERT INTO lead (profile_name,phone,lang) values (?,?,?)"
-    connection.query(req,[profileName,from,store_id,lang],(errros,results) => {
+    connection.query(req,[profileName,from,lang],(errros,results) => {
         if(errros) console.log(errros)
     })
 }
