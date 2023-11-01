@@ -18,6 +18,7 @@ app.post("/chat-bot",(req,res)=>{
     
     const message = req.body
 
+    console.log(message)
     const option= {
         "from":"14157386102",
         "to":  "212621586010",
