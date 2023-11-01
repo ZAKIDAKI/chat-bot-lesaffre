@@ -12,7 +12,7 @@ exports.saveLeads = (lead) => {
 }
 
 exports.getLang = (phone,callback) => {
-    let req= "select lang from leads where phone = ? ORDER BY id DESC LIMIT 1"
+    let req= "select lang from lead where phone = ? ORDER BY id DESC LIMIT 1"
 
     connection.query(req,phone,(error,results) => {
         if(error) console.log(error)
