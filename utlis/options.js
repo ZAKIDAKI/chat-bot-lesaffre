@@ -13,7 +13,7 @@ exports.getOrder=(phone,callback) => {
     })
 }
 
-exports.gammeProduits=(phone,callback)=>{
+exports.getProduits=(lang)=>{
 
     let produits=["Ibis plaitinium","Magimix rouge","Magimix pré-poussé surgelé","Magimix Soft"," Ibis Bleu","Levure Jaouda Fraiche"]
     
@@ -47,5 +47,6 @@ exports.gammeProduits=(phone,callback)=>{
                 ]
               }
             }
-      }
+    }
+    return custom
 }
