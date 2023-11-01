@@ -2,10 +2,11 @@
 const express=require("express")
 const app=express()
 const { sendMessage } =require("./utlis/send-message")
-const { welcomeMessage } = require("./utlis/default")
+const { welcomeMessage, listOptions } = require("./utlis/default")
 require('dotenv').config()
 const fs = require('fs');
 const { saveLeads } = require("./controller/lead")
+const { getOrder } = require("./utlis/options")
 app.use(express.json())
 
 
@@ -39,7 +40,9 @@ app.post("/chat-bot",(req,res)=>{
                 let step = id.replace('option','')
                 switch (step) {
                     case 1:
-                            sendMessage({...option,"message_type": "text","text": "WELCOME STEP 1" })
+                        getOrder(message.from,({text,lang}) => {
+                            sendMessage({...option,"message_type": "text","text": text})
+                        })
                         break;
                 
                     default:
