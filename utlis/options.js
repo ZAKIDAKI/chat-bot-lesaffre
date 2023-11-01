@@ -1,7 +1,5 @@
 const { getLang } = require("../controller/lead");
 
-const { getLang } = require("./Message");
-
 exports.getOrder=(phone,callback) => {
 
     let text =`Notre responsable commercial prendra contact avec vous dans les plus proches délais. Merci et à très bientôt!`
