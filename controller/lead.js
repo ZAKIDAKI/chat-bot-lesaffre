@@ -1,3 +1,4 @@
+var connection = require('../database/Connection');
 
 exports.saveLeads = (lead) => {
     
@@ -8,7 +9,7 @@ exports.saveLeads = (lead) => {
         if(errros) console.log(errros)
     })
 }
- 
+
 exports.getLang = (phone,callback) => {
     let req= "select lang from leads where phone = ? ORDER BY id DESC LIMIT 1"
 
