@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:@localhost:3306/chat_bot_lesaffre"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// model Post {
+//   // id        Int      @id @default(autoincrement())
+//   // createdAt DateTime @default(now())
+//   // updatedAt DateTime @updatedAt
+//   // title     String   @db.VarChar(255)
+//   // content   String?
+//   // published Boolean  @default(false)
+//   // author    User     @relation(fields: [authorId], references: [id])
+//   // authorId  Int
+// }
+
+model Lead {
+  id        Int      @id @default(autoincrement())
+  profileName String @db.VarChar(255)
+  phone String @db.VarChar(255)
+  lang String @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model Message {
+  id        Int      @id @default(autoincrement())
+  messageId String @db.VarChar(255)
+  to String @db.VarChar(255)
+  from String @db.VarChar(255)
+  type String @db.VarChar(255)
+  body String @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model City{
+  id        Int      @id @default(autoincrement())
+  name String @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
