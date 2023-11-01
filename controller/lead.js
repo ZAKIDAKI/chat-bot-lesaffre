@@ -1,4 +1,4 @@
-var connection = require('../database/Connection');
+var connection = require('../database/connect');
 
 exports.saveLeads = (lead) => {
     
