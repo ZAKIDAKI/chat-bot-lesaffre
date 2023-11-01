@@ -44,6 +44,11 @@ app.post("/chat-bot",(req,res)=>{
                             sendMessage({...option,"message_type": "text","text": text})
                         })
                         break;
+                    case "2":
+                        getOrder(message.from,({text,lang}) => {
+                            sendMessage({...option,"message_type": "text","text": text})
+                        })
+                        break;
                 
                     default:
                         break;
