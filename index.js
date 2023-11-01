@@ -5,6 +5,7 @@ const { sendMessage } =require("./utlis/send-message")
 const { welcomeMessage } = require("./utlis/default")
 require('dotenv').config()
 const fs = require('fs');
+app.use(express.json())
 
 
 app.get("/leads",async (req,res)=>{
@@ -14,10 +15,7 @@ app.get("/leads",async (req,res)=>{
 })
 
 app.post("/chat-bot",(req,res)=>{
-    console.log(req.body)
-    
     const message = req.body
-
     console.log(message)
     const option= {
         "from":"14157386102",
