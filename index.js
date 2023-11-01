@@ -23,14 +23,14 @@ app.post("/chat-bot",(req,res)=>{
         "to":  "212621586010",
         "channel": "whatsapp",
     }
-    switch (key) {
-        case value:
+    // switch (key) {
+    //     case value:
             
-            break;
+    //         break;
     
-        default:
-            break;
-    }
+    //     default:
+    //         break;
+    // }
     sendMessage({...option,"message_type": "custom","custom": welcomeMessage()})
     res.status(200).end();
 })
