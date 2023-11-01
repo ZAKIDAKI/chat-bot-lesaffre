@@ -24,7 +24,7 @@ app.post("/chat-bot",(req,res)=>{
         "channel": "whatsapp",
     }
 
-    switch (message_type) {
+    switch (message.message_type) {
         case "reply":
             let {id , title,description} = message?.reply
             if (id.includes('btn-lang-fr')){
