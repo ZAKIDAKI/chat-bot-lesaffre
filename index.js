@@ -39,7 +39,7 @@ app.post("/chat-bot",(req,res)=>{
             else if (id.includes('option')){
                 let step = id.replace('option','')
                 switch (step) {
-                    case 1:
+                    case "1":
                         getOrder(message.from,({text,lang}) => {
                             sendMessage({...option,"message_type": "text","text": text})
                         })
