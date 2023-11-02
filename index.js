@@ -32,7 +32,11 @@ app.post("/chat-bot",(req,res)=>{
         if(lastMessage.body === "option6"){
             sendMessage({...option,"message_type": "text","text": getRating(message.text) })
             backToMenu(option)
-        }else{
+        }else if(lastMessage.body === "option5"){
+            sendMessage({...option,"message_type": "text","text": "Merci de nous avoir contacté, un téléconseiller prendra en charge votre réclamation dans les plus brefs délais." })
+
+        }
+        else{
             switch (message.message_type) {
                 case "reply":
                     let {id , title,description} = message?.reply
