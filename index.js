@@ -8,6 +8,8 @@ const fs = require('fs');
 const { saveLeads, getLang } = require("./controller/lead")
 const { getOrder, getProduits, getFaq, programmeLesAffre, visitWebSite, getReclamation } = require("./utlis/options")
 const { getProducts, getOneProduct } = require("./controller/product")
+const { ranting } = require("./utlis/ranting")
+const { getLastMessage } = require("./utlis/messages")
 app.use(express.json())
 
 
@@ -26,85 +28,99 @@ app.post("/chat-bot",(req,res)=>{
         "channel": "whatsapp",
     }
 
-    switch (message.message_type) {
-        case "reply":
-            let {id , title,description} = message?.reply
-            if (id.includes('btn-lang-fr')){
-                saveLeads({profileName:message.profile.name,from:message.from})
-                sendMessage({...option,"message_type": "custom","custom": listOptions("fr") })
-
-            }
-            else if (id.includes('btn-lang-ar')) {
-                saveLeads({profileName:message.profile.name,from:message.from,lang:"ar"})
-                sendMessage({...option,"message_type": "custom","custom": listOptions("ar") })
-            }
-            else if(id.includes('menu-default')) {
-                getLang(message.from,({lang}) => {
-                    sendMessage({...option,"message_type": "custom","custom": listOptions(lang) })
-                })
-            }
-            else if(id.includes('product')) {
-                let productId = id.replace('product','')
-                getOneProduct(productId,({product})=> {
-                    sendMessage({...option,"message_type": "text","text": product.description})
-                })
-                
-                backToMenu(option)
-
-            }
-            else if (id.includes('option')){
-                let step = id.replace('option','')
-                console.log(step)
-                switch (step) {
-                    case "1":
-                        getOrder(message.from,({text,lang}) => {
-                            sendMessage({...option,"message_type": "text","text": text})
-                        })
-                        backToMenu(option)
-                        break;
-                    case "2":
-                        getProducts(({products}) => {
-                            sendMessage({...option,"message_type": "custom","custom": getProduits(products)})
-                        })
-                        // backToMenu(option)
-                        break;
-                    case "3":
+    getLastMessage(message.from,({lastMessage})=>{
+        if(lastMessage.body === "6"){
+            sendMessage({...option,"message_type": "custom","custom": "Nous sommes navrés de votre mécontentement. Notre support va vous contacter pour savoir plus davantage" })
+        }else{
+            switch (message.message_type) {
+                case "reply":
+                    let {id , title,description} = message?.reply
+                    if (id.includes('btn-lang-fr')){
+                        saveLeads({profileName:message.profile.name,from:message.from})
+                        sendMessage({...option,"message_type": "custom","custom": listOptions("fr") })
+        
+                    }
+                    else if (id.includes('btn-lang-ar')) {
+                        saveLeads({profileName:message.profile.name,from:message.from,lang:"ar"})
+                        sendMessage({...option,"message_type": "custom","custom": listOptions("ar") })
+                    }
+                    else if(id.includes('menu-default')) {
                         getLang(message.from,({lang}) => {
-                            sendMessage({...option,"message_type": "custom","custom": getFaq(lang)})
+                            sendMessage({...option,"message_type": "custom","custom": listOptions(lang) })
                         })
-                        break;
-                    case "4":
-                        getLang(message.from,({lang}) => {
-                            sendMessage({...option,"message_type": "custom","custom": programmeLesAffre(lang)})
+                    }
+                    else if(id.includes('product')) {
+                        let productId = id.replace('product','')
+                        getOneProduct(productId,({product})=> {
+                            sendMessage({...option,"message_type": "text","text": product.description})
                         })
+                        
                         backToMenu(option)
-                        break;
-                    case "5":
-                        getReclamation(message.from,({text,lang}) => {
-                            sendMessage({...option,"message_type": "text","text": text})
-                        })
-                        backToMenu(option)
+        
+                    }
+                    else if (id.includes('option')){
+                        let step = id.replace('option','')
+                        console.log(step)
+                        switch (step) {
+                            case "1":
+                                getOrder(message.from,({text,lang}) => {
+                                    sendMessage({...option,"message_type": "text","text": text})
+                                })
+                                backToMenu(option)
+                                break;
+                            case "2":
+                                getProducts(({products}) => {
+                                    sendMessage({...option,"message_type": "custom","custom": getProduits(products)})
+                                })
+                                // backToMenu(option)
+                                break;
+                            case "3":
+                                getLang(message.from,({lang}) => {
+                                    sendMessage({...option,"message_type": "custom","custom": getFaq(lang)})
+                                })
+                                break;
+                            case "4":
+                                getLang(message.from,({lang}) => {
+                                    sendMessage({...option,"message_type": "custom","custom": programmeLesAffre(lang)})
+                                })
+                                backToMenu(option)
+                                break;
+                            case "5":
+                                getReclamation(message.from,({text,lang}) => {
+                                    sendMessage({...option,"message_type": "text","text": text})
+                                })
+                                backToMenu(option)
+                            break;
+                            case "6":
+                                ranting(message.from,({text}) => {
+                                    sendMessage({...option,"message_type": "text","text": text})
+                                })
+                                backToMenu(option)
+                            break;
+                            case "7":
+                                visitWebSite(message.from,({text,lang}) => {
+                                    sendMessage({...option,"message_type": "text","text": text})
+                                })
+                                backToMenu(option)
+                            break;
+                            case "8":
+                                sendMessage({...option,"message_type": "text","text": "Merci de nous fournir votre ville "})
+                            break;
+                        
+                            default:
+                                break;
+                        }
+                    }
                     break;
-                    case "7":
-                        visitWebSite(message.from,({text,lang}) => {
-                            sendMessage({...option,"message_type": "text","text": text})
-                        })
-                        backToMenu(option)
+            
+                default:
+                    sendMessage({...option,"message_type": "custom","custom": welcomeMessage()})
                     break;
-                    case "8":
-                        sendMessage({...option,"message_type": "text","text": "Merci de nous fournir votre ville "})
-                    break;
-                
-                    default:
-                        break;
-                }
             }
-            break;
+        }
+    })
+
     
-        default:
-            sendMessage({...option,"message_type": "custom","custom": welcomeMessage()})
-            break;
-    }
     res.status(200).end();
 })
 

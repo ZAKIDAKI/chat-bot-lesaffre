@@ -26,7 +26,7 @@ exports.saveResponne=(response) => {
     let {message_id,from,to,type} = response;
 
     let req = "INSERT into message (`message_id`, `to`, `from`, `type`) values (?,?,?,?)"  
-    connection.query(req,[message_id,from,to,type],(error,results)=> {
+    connection.query(req,[message_id,to,from,type],(error,results)=> {
         if(error) console.log(error)
     })
 }
