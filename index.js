@@ -44,6 +44,7 @@ app.post("/chat-bot",(req,res)=>{
             }
             else if (id.includes('option')){
                 let step = id.replace('option','')
+                console.log(step)
                 switch (step) {
                     case "1":
                         getOrder(message.from,({text,lang}) => {
@@ -63,8 +64,8 @@ app.post("/chat-bot",(req,res)=>{
                         })
                         break;
                     case "4":
-                        programmeLesAffre(message.from,({lang}) => {
-                            sendMessage({...option,"message_type": "custom","custom": getFaq(lang)})
+                        getLang(message.from,({lang}) => {
+                            sendMessage({...option,"message_type": "custom","custom": programmeLesAffre(lang)})
                         })
                         backToMenu(option)
                         break;

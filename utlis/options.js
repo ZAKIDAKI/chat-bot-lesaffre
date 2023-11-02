@@ -103,11 +103,11 @@ exports.getFaq=(lang)=>{
 }
 
 exports.programmeLesAffre=(lang)=>{
-    let produits=["S'inscrire au programme Lesaffre & Moi","Gagner des points de fidélité","consulter mon solde de points ?","Rcevoir mes cadeaux "]
+    let produits=["S'inscrire au programme Lesaffre & Moi","Gagner des points de fidélité","consulter mon solde de points ?","Rcevoir mes cadeaux"]
     
     let rows = produits.map((produit,index) => {
         return {
-          "id":`programmeLesAffre${index}`,
+          "id":`offre${index}`,
           "title": " ",
           "description": produit,
         }
