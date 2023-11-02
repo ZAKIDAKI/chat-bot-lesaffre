@@ -137,3 +137,30 @@ exports.programmeLesAffre=(lang)=>{
     }
     return custom
 }
+
+exports.visitWebSite=(phone,callback)=>{
+  let text=`Ci-dessous les liens vers nos pages Lesaffre .
+
+Facebook : https://www.facebook.com/LesaffreMaroc/ 
+Instagram  : https://www.instagram.com/lesaffre.maroc 
+    
+Afin d'accéder au site web de catalogues
+https://www.lesaffredoc.ma/`
+
+    getLang(phone,({lang})=>{
+      if(lang === "ar"){
+        text=`من أجل الوصول إلى مواقعنا الإلكترونية ، ندعوك للنقر على الروابط أدناه 👇
+
+Facebook : https://www.facebook.com/LesaffreMaroc/ 
+
+Instagram  : https://www.instagram.com/lesaffre.maroc 
+            
+Afin d'accéder au site web de catalogues
+https://www.lesaffredoc.ma/`
+      }
+
+      return callback({text,lang})
+
+    })
+
+}

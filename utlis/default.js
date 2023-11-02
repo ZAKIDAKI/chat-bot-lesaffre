@@ -104,7 +104,26 @@ const options ={
             title:" ",
             description : "⚠️ Soumettre une réclamation"
         },
-        
+        {
+            id:"option5",
+            title:" ",
+            description : "⚠️ Soumettre une réclamation"
+        },
+        {
+            id:"option6",
+            title:" ",
+            description : "⭐ Sur une echelle de 1 a 10 comment evalueriez  vous votre niveau de satisfaction globale avec Lesaffre :"
+        },
+        {
+            id:"option7",
+            title:" ",
+            description : "🌐 S'abonner pages Lesaffre ou visiter site web"
+        },
+        {
+            id:"option8",
+            title:" ",
+            description : "📦 Devenir distributeur "
+        },
     ],
     "ar" : [
         {
@@ -132,6 +151,21 @@ const options ={
             id:"option5",
             title:" ",
             description : "⚠️ تقديم شكوى"
+        },
+        {
+            id:"option6",
+            title:" ",
+            description : "⭐ على مقياس من 1 إلى 10، كيف تقيم مستوى رضاك الشامل مع شركة Lesaffre؟ "
+        },
+        {
+            id:"option7",
+            title:" ",
+            description: "🛍 الاشتراك في صفحاتنا و  زيارة موقعنا الإلكتروني"
+        },
+        {
+            id:"option8",
+            title:" ",
+            description : "📦الانضمام كموزع "
         },
       ]
   } 

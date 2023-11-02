@@ -1,20 +1,14 @@
 const axios = require('axios');
-
+require("dotenv").config()
 exports.sendMessage=(data)=>{
-    const apiKey = '39d56766';
-    const apiSecret = '2JSqVXHtN3xaJ1ql';
-
     const config = {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-        },
-        auth: {
-            username: apiKey,
-            password: apiSecret,
-        },
+          'Authorization': 'Bearer ' + process.env.ACCESS_TOKEM
+        }
     };
-    axios.post('https://messages-sandbox.nexmo.com/v1/messages', data, config)
+    axios.post('https://api.nexmo.com/v1/messages', data, config)
     .then((response) => {
        console.log(response)
     })

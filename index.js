@@ -6,7 +6,7 @@ const { welcomeMessage, listOptions } = require("./utlis/default")
 require('dotenv').config()
 const fs = require('fs');
 const { saveLeads, getLang } = require("./controller/lead")
-const { getOrder, getProduits, getFaq, programmeLesAffre } = require("./utlis/options")
+const { getOrder, getProduits, getFaq, programmeLesAffre, visitWebSite } = require("./utlis/options")
 app.use(express.json())
 
 
@@ -63,6 +63,13 @@ app.post("/chat-bot",(req,res)=>{
                         getReclamation(message.from,({text,lang}) => {
                             sendMessage({...option,"message_type": "text","text": text})
                         })
+                    break;
+                    case "7":
+                        visitWebSite(message.from,({text,lang}) => {
+                            sendMessage({...option,"message_type": "text","text": text})
+                        })
+                    case "8":
+                        sendMessage({...option,"message_type": "text","text": "Merci de nous fournir votre ville "})
                     break;
                 
                     default:
