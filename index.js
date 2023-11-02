@@ -29,7 +29,7 @@ app.post("/chat-bot",(req,res)=>{
     }
 
     getLastMessage(message.from,({lastMessage})=>{
-        if(lastMessage.body === "6"){
+        if(lastMessage.body === "option6"){
             sendMessage({...option,"message_type": "custom","custom": "Nous sommes navrés de votre mécontentement. Notre support va vous contacter pour savoir plus davantage" })
         }else{
             switch (message.message_type) {
@@ -95,7 +95,6 @@ app.post("/chat-bot",(req,res)=>{
                                 ranting(message.from,({text}) => {
                                     sendMessage({...option,"message_type": "text","text": text})
                                 })
-                                backToMenu(option)
                             break;
                             case "7":
                                 visitWebSite(message.from,({text,lang}) => {
