@@ -13,3 +13,17 @@ exports.ranting=(phone,callback)=>{
     })
 
 }
+
+exports.getRating=(note)=>{
+
+    let text =""
+
+    if(+note >= 5 ){
+        text="Nous sommes navrés de votre mécontentement. Notre support va vous contacter pour savoir plus davantage"
+    }else{
+        text="Nous sommes ravis que vous pensez du bien de nous. N'hésitez pas à nous solliciter pour tous besoin"
+    }
+
+    return text;
+
+}

@@ -8,7 +8,7 @@ const fs = require('fs');
 const { saveLeads, getLang } = require("./controller/lead")
 const { getOrder, getProduits, getFaq, programmeLesAffre, visitWebSite, getReclamation } = require("./utlis/options")
 const { getProducts, getOneProduct } = require("./controller/product")
-const { ranting } = require("./utlis/ranting")
+const { ranting, getRating } = require("./utlis/ranting")
 const { getLastMessage } = require("./utlis/messages")
 app.use(express.json())
 
@@ -31,7 +31,7 @@ app.post("/chat-bot",(req,res)=>{
     getLastMessage(message.from,({lastMessage})=>{
         logToFile(JSON.stringify(lastMessage))
         if(lastMessage.body === "option6"){
-            sendMessage({...option,"message_type": "text","text": "Nous sommes navrés de votre mécontentement. Notre support va vous contacter pour savoir plus davantage" })
+            sendMessage({...option,"message_type": "text","text": getRating(message.body) })
         }else{
             switch (message.message_type) {
                 case "reply":
