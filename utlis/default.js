@@ -81,17 +81,17 @@ const options ={
         {
             id:"option1",
             title:" ",
-            description : "📦 Passer une commande de produits"
+            description : "📦 1- Passer une commande de produits"
         },
         {
             id:"option2",
             title:" ",
-            description : "🍞 Découvrir la gamme de produits"
+            description : "🍞 2- Découvrir la gamme de produits"
         },
         {
             id:"option3",
             title:" ",
-            description : "🎧 Demander assistance ou support technique ?"
+            description : "🎧 3- Demander assistance ou support technique ?"
         },
         {
             id:"option4",
@@ -102,22 +102,22 @@ const options ={
         {
             id:"option5",
             title:" ",
-            description : "⚠️ Soumettre une réclamation"
+            description : "⚠️ 5- Soumettre une réclamation"
         },
         {
             id:"option6",
             title:" ",
-            description : "⭐ noter nos services"
+            description : "⭐ 6- noter nos services"
         },
         {
             id:"option7",
             title:" ",
-            description : "🌐 S'abonner pages Lesaffre ou visiter site web"
+            description : "🌐 7- S'abonner pages Lesaffre ou visiter site web"
         },
         {
             id:"option8",
             title:" ",
-            description : "📦 Devenir distributeur "
+            description : "📦 8- Devenir distributeur "
         },
     ],
     "ar" : [
@@ -164,3 +164,32 @@ const options ={
         },
       ]
   } 
+
+exports.buttonMenu= (lang) => {
+    let custom = {
+        "type": "interactive",
+        "interactive": {
+          "type": "button",
+          "body": {
+              "text":lang === "ar" ? "للعودة إلى القائمة، انقر أدناه" : "Veuillez appuyer ci-dessous pour revenir au menu principal !"
+          },
+          // "footer": {
+          //     "text": " "
+          // },
+          "action": {
+              "buttons": [
+                  {
+                      "type": "reply",
+                      "reply": {
+                          "id": "menu-default",
+                          "title":lang === "ar" ? "القائمة" : "Menu"
+                      }
+                  },
+              ]
+          }
+      }
+    }
+  
+    return custom
+  }
+  

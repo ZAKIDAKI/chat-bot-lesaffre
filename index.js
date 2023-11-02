@@ -43,11 +43,13 @@ app.post("/chat-bot",(req,res)=>{
                         getOrder(message.from,({text,lang}) => {
                             sendMessage({...option,"message_type": "text","text": text})
                         })
+                        backToMenu()
                         break;
                     case "2":
                         getLang(message.from,({lang}) => {
                             sendMessage({...option,"message_type": "custom","custom": getProduits(lang)})
                         })
+                        backToMenu()
                         break;
                     case "3":
                         getLang(message.from,({lang}) => {
@@ -58,16 +60,19 @@ app.post("/chat-bot",(req,res)=>{
                         programmeLesAffre(message.from,({lang}) => {
                             sendMessage({...option,"message_type": "custom","custom": getFaq(lang)})
                         })
+                        backToMenu()
                         break;
                     case "5":
                         getReclamation(message.from,({text,lang}) => {
                             sendMessage({...option,"message_type": "text","text": text})
                         })
+                        backToMenu()
                     break;
                     case "7":
                         visitWebSite(message.from,({text,lang}) => {
                             sendMessage({...option,"message_type": "text","text": text})
                         })
+                        backToMenu()
                     case "8":
                         sendMessage({...option,"message_type": "text","text": "Merci de nous fournir votre ville "})
                     break;
@@ -82,24 +87,6 @@ app.post("/chat-bot",(req,res)=>{
             sendMessage({...option,"message_type": "custom","custom": welcomeMessage()})
             break;
     }
-
-// {
-//     to: '14157386102',
-//     from: '212621586010',
-//     channel: 'whatsapp',
-//     message_uuid: '9e84f409-b8d8-41a8-86e7-fb66dd915cc6',
-//     timestamp: '2023-11-01T08:17:18Z',
-//     message_type: 'reply',
-//     reply: { id: 'btn-lang-fr', title: 'Français' },
-//     context_status: 'available',
-//     context: {
-//       message_from: '14157386102',
-//       message_uuid: 'fd8472a0-46c3-4c3d-b0c4-c9ffb9b19fa3'
-//     },
-//     profile: { name: 'Zakaria MOUCHTATI' }
-//   }
-    
-    
     res.status(200).end();
 })
 
@@ -119,4 +106,20 @@ function logToFile(message) {
         console.log(`Log written to ${logFileName}: ${logMessage}`);
       }
     });
+}
+
+
+const backToMenu=()=>{
+    setTimeout(()=>{
+        const option= {
+            "from": data.from,
+            "to":  data.from,
+            "channel": "whatsapp",
+            "message_type": "custom",
+            "custom": buttonMenu("fr") 
+        }
+
+        sendMessage(option)
+
+    },300)
 }

@@ -28,7 +28,7 @@ exports.getReclamation=(phone,callback) => {
 
 exports.getProduits=(lang)=>{
 
-    let produits=["Ibis plaitinium","Magimix rouge","Magimix pré-poussé surgelé","Magimix Soft"," Ibis Bleu","Levure Jaouda Fraiche"]
+    let produits=["Ibis platinium","Magimix rouge","Magimix pré-poussé surgelé","Magimix Soft"," Ibis Bleu","Levure Jaouda Fraiche"]
     
     let rows = produits.map((produit,index) => {
         return {
@@ -47,7 +47,7 @@ exports.getProduits=(lang)=>{
             "text": lang === "ar" ? "DR BREAD" : "DR BREAD"
           },
           "body": {
-            "text":lang === "ar" ? "الرجاء اختيار واحدة من علاماتنا التجارية" : "Veuillez sélectionner l’une de nos enseignes"
+            "text":lang === "ar" ? "الرجاء اختيار واحدة من علاماتنا التجارية" : "Veuillez sélectionner l'un de nos produits"
           },
           "action": {
             "button": lang === "ar" ? "خيارات" :"Options",
