@@ -29,6 +29,7 @@ app.post("/chat-bot",(req,res)=>{
     }
 
     getLastMessage(message.from,({lastMessage})=>{
+        logToFile(lastMessage)
         if(lastMessage.body === "option6"){
             sendMessage({...option,"message_type": "custom","custom": "Nous sommes navrés de votre mécontentement. Notre support va vous contacter pour savoir plus davantage" })
         }else{
