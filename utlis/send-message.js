@@ -23,10 +23,10 @@ exports.sendMessage=(data)=>{
 
 exports.saveResponne=(response) => {
 
-    let {message_id,from,to,type} = response;
+    let {message_id , from , to , type , body= null } = response;
 
-    let req = "INSERT into message (`message_id`, `to`, `from`, `type`) values (?,?,?,?)"  
-    connection.query(req,[message_id,to,from,type],(error,results)=> {
+    let req = "INSERT into message (`message_id`, `to`, `from`, `type`, `body`) values (?,?,?,?,?)"  
+    connection.query(req,[message_id,to,from,type,body],(error,results)=> {
         if(error) console.log(error)
     })
 }
