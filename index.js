@@ -32,9 +32,15 @@ app.post("/chat-bot",(req,res)=>{
                 saveLeads({profileName:message.profile.name,from:message.from})
                 sendMessage({...option,"message_type": "custom","custom": listOptions("fr") })
 
-            }else if (id.includes('btn-lang-ar')) {
+            }
+            else if (id.includes('btn-lang-ar')) {
                 saveLeads({profileName:message.profile.name,from:message.from,lang:"ar"})
                 sendMessage({...option,"message_type": "custom","custom": listOptions("ar") })
+            }
+            else if(id.includes('menu-default')) {
+                getLang(message.from,({lang}) => {
+                    sendMessage({...option,"message_type": "custom","custom": listOptions(lang) })
+                })
             }
             else if (id.includes('option')){
                 let step = id.replace('option','')
@@ -73,6 +79,7 @@ app.post("/chat-bot",(req,res)=>{
                             sendMessage({...option,"message_type": "text","text": text})
                         })
                         backToMenu(option)
+                    break;
                     case "8":
                         sendMessage({...option,"message_type": "text","text": "Merci de nous fournir votre ville "})
                     break;
