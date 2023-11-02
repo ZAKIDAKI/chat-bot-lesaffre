@@ -105,11 +105,6 @@ const options ={
             description : "⚠️ Soumettre une réclamation"
         },
         {
-            id:"option5",
-            title:" ",
-            description : "⚠️ Soumettre une réclamation"
-        },
-        {
             id:"option6",
             title:" ",
             description : "⭐ Sur une echelle de 1 a 10 comment evalueriez  vous votre niveau de satisfaction globale avec Lesaffre :"
