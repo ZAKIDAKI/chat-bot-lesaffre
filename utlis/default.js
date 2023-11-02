@@ -107,7 +107,7 @@ const options ={
         {
             id:"option6",
             title:" ",
-            description : "⭐ Sur une echelle de 1 a 10 comment evalueriez  vous votre niveau de satisfaction globale avec Lesaffre :"
+            description : "⭐ noter nos services"
         },
         {
             id:"option7",
