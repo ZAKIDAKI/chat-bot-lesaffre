@@ -34,7 +34,7 @@ app.post("/chat-bot",(req,res)=>{
             backToMenu(option)
         }else if(lastMessage.body === "option5"){
             sendMessage({...option,"message_type": "text","text": "Merci de nous avoir contacté, un téléconseiller prendra en charge votre réclamation dans les plus brefs délais." })
-
+            backToMenu(option)
         }
         else{
             switch (message.message_type) {
@@ -94,7 +94,6 @@ app.post("/chat-bot",(req,res)=>{
                                 getReclamation(message.from,({text,lang}) => {
                                     sendMessage({...option,"message_type": "text","text": text})
                                 })
-                                backToMenu(option)
                             break;
                             case "6":
                                 ranting(message.from,({text}) => {
