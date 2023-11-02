@@ -30,7 +30,7 @@ app.post("/chat-bot",(req,res)=>{
 
     getLastMessage(message.from,({lastMessage})=>{
         if(lastMessage.body === "option6"){
-            sendMessage({...option,"message_type": "text","text": getRating(message.body) })
+            sendMessage({...option,"message_type": "text","text": getRating(message.text) })
             backToMenu(option)
         }else{
             switch (message.message_type) {
