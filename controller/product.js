@@ -15,6 +15,6 @@ exports.getOneProduct=(productId,callback)=>{
     let sql=`select *from products where id=?`;
     connection.query(sql,productId,(error,results,fields) => {
         if(error) console.log(error) 
-        callback({product:results});
+        callback({product:results[0]});
     })
 }
