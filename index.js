@@ -29,7 +29,6 @@ app.post("/chat-bot",(req,res)=>{
     }
 
     getLastMessage(message.from,({lastMessage})=>{
-        logToFile(JSON.stringify(lastMessage))
         if(lastMessage.body === "option6"){
             sendMessage({...option,"message_type": "text","text": getRating(message.body) })
         }else{
@@ -122,11 +121,11 @@ app.post("/chat-bot",(req,res)=>{
 
 
     if(message.message_type === "reply"){
-
         let {id , title,description} = message?.reply
-        console.log(id,title,description)
-    
         saveResponne({message_id:message.id,from:message.from,to:message.to,type:message.message_type,body:id})
+    }else if(message.message_type === "text"){
+        saveResponne({message_id:message.id,from:message.from,to:message.to,type:message.message_type,body:message.text})
+
     }
     // message_id,from,to,type
 

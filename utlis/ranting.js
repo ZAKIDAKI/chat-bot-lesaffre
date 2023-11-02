@@ -16,6 +16,7 @@ exports.ranting=(phone,callback)=>{
 
 exports.getRating=(note)=>{
 
+    console.log(note)
     let text =""
 
     if(+note >= 5 ){
