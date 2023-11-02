@@ -48,6 +48,9 @@ app.post("/chat-bot",(req,res)=>{
                 getOneProduct(productId,({product})=> {
                     sendMessage({...option,"message_type": "text","text": product.description})
                 })
+                
+                backToMenu(option)
+
             }
             else if (id.includes('option')){
                 let step = id.replace('option','')
