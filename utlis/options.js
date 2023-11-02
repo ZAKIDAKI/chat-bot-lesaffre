@@ -32,7 +32,7 @@ exports.getProduits=(products)=>{
     
     let rows = products.map((produit,index) => {
         return {
-          "id":`product${products.id}`,
+          "id":`product${produit.id}`,
           "title": " ",
           "description": produit.title,
         }

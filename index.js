@@ -61,7 +61,6 @@ app.post("/chat-bot",(req,res)=>{
                         break;
                     case "2":
                         getProducts(({products}) => {
-                            console.log(products)
                             sendMessage({...option,"message_type": "custom","custom": getProduits(products)})
                         })
                         // backToMenu(option)
