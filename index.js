@@ -1,7 +1,7 @@
 
 const express=require("express")
 const app=express()
-const { sendMessage } =require("./utlis/send-message")
+const { sendMessage, saveResponne } =require("./utlis/send-message")
 const { welcomeMessage, listOptions, buttonMenu } = require("./utlis/default")
 require('dotenv').config()
 const fs = require('fs');
@@ -119,6 +119,10 @@ app.post("/chat-bot",(req,res)=>{
             }
         }
     })
+
+    // message_id,from,to,type
+
+    saveResponne({message_id:message.id,from:message.from,to:message.to,type:message.message_type})
 
     
     res.status(200).end();

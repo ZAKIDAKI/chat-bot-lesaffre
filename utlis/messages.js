@@ -5,7 +5,7 @@ exports.getLastMessage=(phone,callback)=>{
 
     connection.query(req,[phone],(error,results)=> {
         if(error) console.log(error)
-        callback({message:results[0]});
+        callback({lastMessage:results[0]});
 
     })
 }
