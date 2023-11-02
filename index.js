@@ -43,13 +43,13 @@ app.post("/chat-bot",(req,res)=>{
                         getOrder(message.from,({text,lang}) => {
                             sendMessage({...option,"message_type": "text","text": text})
                         })
-                        backToMenu()
+                        backToMenu(option)
                         break;
                     case "2":
                         getLang(message.from,({lang}) => {
                             sendMessage({...option,"message_type": "custom","custom": getProduits(lang)})
                         })
-                        backToMenu()
+                        backToMenu(option)
                         break;
                     case "3":
                         getLang(message.from,({lang}) => {
@@ -60,19 +60,19 @@ app.post("/chat-bot",(req,res)=>{
                         programmeLesAffre(message.from,({lang}) => {
                             sendMessage({...option,"message_type": "custom","custom": getFaq(lang)})
                         })
-                        backToMenu()
+                        backToMenu(option)
                         break;
                     case "5":
                         getReclamation(message.from,({text,lang}) => {
                             sendMessage({...option,"message_type": "text","text": text})
                         })
-                        backToMenu()
+                        backToMenu(option)
                     break;
                     case "7":
                         visitWebSite(message.from,({text,lang}) => {
                             sendMessage({...option,"message_type": "text","text": text})
                         })
-                        backToMenu()
+                        backToMenu(option)
                     case "8":
                         sendMessage({...option,"message_type": "text","text": "Merci de nous fournir votre ville "})
                     break;
@@ -109,17 +109,8 @@ function logToFile(message) {
 }
 
 
-const backToMenu=()=>{
+const backToMenu=(option)=>{
     setTimeout(()=>{
-        const option= {
-            "from": data.from,
-            "to":  data.from,
-            "channel": "whatsapp",
-            "message_type": "custom",
-            "custom": buttonMenu("fr") 
-        }
-
-        sendMessage(option)
-
+        sendMessage({...option,"message_type": "custom","custom": buttonMenu("fr") })
     },300)
 }
