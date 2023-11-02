@@ -86,7 +86,7 @@ exports.getFaq=(lang)=>{
             "text": lang === "ar" ? "DR BREAD" : "DR BREAD"
           },
           "body": {
-            "text":lang === "ar" ? "الرجاء اختيار واحدة من علاماتنا التجارية" : "Veuillez sélectionner l’une de nos enseignes"
+            "text":lang === "ar" ? "الرجاء اختيار مشكلتك" : "Veuillez sélectionner votre problème"
           },
           "action": {
             "button": lang === "ar" ? "خيارات" :"Options",
