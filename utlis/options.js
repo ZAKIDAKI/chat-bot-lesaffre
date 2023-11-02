@@ -26,15 +26,15 @@ exports.getReclamation=(phone,callback) => {
     })
 }
 
-exports.getProduits=(lang)=>{
+exports.getProduits=(products)=>{
 
-    let produits=["Ibis platinium","Magimix rouge","Magimix pré-poussé surgelé","Magimix Soft"," Ibis Bleu","Levure Jaouda Fraiche"]
+  let lang="fr"
     
-    let rows = produits.map((produit,index) => {
+    let rows = products.map((produit,index) => {
         return {
-          "id":`produit${index}`,
+          "id":`product${products.id}`,
           "title": " ",
-          "description": produit,
+          "description": produit.title,
         }
       })
 

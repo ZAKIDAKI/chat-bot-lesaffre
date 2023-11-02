@@ -7,6 +7,7 @@ require('dotenv').config()
 const fs = require('fs');
 const { saveLeads, getLang } = require("./controller/lead")
 const { getOrder, getProduits, getFaq, programmeLesAffre, visitWebSite, getReclamation } = require("./utlis/options")
+const { getProducts, getOneProduct } = require("./controller/product")
 app.use(express.json())
 
 
@@ -42,6 +43,12 @@ app.post("/chat-bot",(req,res)=>{
                     sendMessage({...option,"message_type": "custom","custom": listOptions(lang) })
                 })
             }
+            else if(id.includes('product')) {
+                let productId = id.replace('product','')
+                getOneProduct(productId,({product})=> {
+                    sendMessage({...option,"message_type": "text","text": product.description})
+                })
+            }
             else if (id.includes('option')){
                 let step = id.replace('option','')
                 console.log(step)
@@ -53,8 +60,9 @@ app.post("/chat-bot",(req,res)=>{
                         backToMenu(option)
                         break;
                     case "2":
-                        getLang(message.from,({lang}) => {
-                            sendMessage({...option,"message_type": "custom","custom": getProduits(lang)})
+                        getProducts(({products}) => {
+                            console.log(products)
+                            sendMessage({...option,"message_type": "custom","custom": getProduits(products)})
                         })
                         // backToMenu(option)
                         break;
