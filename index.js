@@ -20,8 +20,8 @@ app.post("/chat-bot",(req,res)=>{
     const message = req.body
     console.log(message)
     const option= {
-        "from" : message.to,
-        "to"   :  message.from,
+        "from": message.to,
+        "to":  message.from,
         "channel": "whatsapp",
     }
 
