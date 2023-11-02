@@ -6,7 +6,7 @@ const { welcomeMessage, listOptions, buttonMenu } = require("./utlis/default")
 require('dotenv').config()
 const fs = require('fs');
 const { saveLeads, getLang } = require("./controller/lead")
-const { getOrder, getProduits, getFaq, programmeLesAffre, visitWebSite } = require("./utlis/options")
+const { getOrder, getProduits, getFaq, programmeLesAffre, visitWebSite, getReclamation } = require("./utlis/options")
 app.use(express.json())
 
 
