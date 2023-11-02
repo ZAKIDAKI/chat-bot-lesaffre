@@ -119,10 +119,15 @@ app.post("/chat-bot",(req,res)=>{
         }
     })
 
-    // message_id,from,to,type
-    let { id : body} = message?.reply
 
-    saveResponne({message_id:message.id,from:message.from,to:message.to,type:message.message_type,body:id})
+    if(message.message_type === "reply"){
+
+        let {id , title,description} = message?.reply
+        console.log(id,title,description)
+    
+        saveResponne({message_id:message.id,from:message.from,to:message.to,type:message.message_type,body:id})
+    }
+    // message_id,from,to,type
 
     
     res.status(200).end();
