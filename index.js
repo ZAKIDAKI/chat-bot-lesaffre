@@ -122,7 +122,7 @@ app.post("/chat-bot",(req,res)=>{
     // message_id,from,to,type
     let { id : body} = message?.reply
 
-    saveResponne({message_id:message.id,from:message.from,to:message.to,type:message.message_type,body:message?.id})
+    saveResponne({message_id:message.id,from:message.from,to:message.to,type:message.message_type,body:id})
 
     
     res.status(200).end();
