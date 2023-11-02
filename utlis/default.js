@@ -171,7 +171,7 @@ exports.buttonMenu= (lang) => {
         "interactive": {
           "type": "button",
           "body": {
-              "text":lang === "ar" ? "للعودة إلى القائمة، انقر أدناه" : "Veuillez appuyer ci-dessous pour revenir au menu principal !"
+              "text":lang === "ar" ? "👇👇 للعودة إلى القائمة، انقر أدناه" : "Veuillez appuyer ci-dessous pour revenir au menu principal ! 👇👇"
           },
           // "footer": {
           //     "text": " "

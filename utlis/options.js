@@ -50,7 +50,7 @@ exports.getProduits=(lang)=>{
             "text":lang === "ar" ? "الرجاء اختيار واحدة من علاماتنا التجارية" : "Veuillez sélectionner l'un de nos produits"
           },
           "action": {
-            "button": lang === "ar" ? "خيارات" :"Options",
+            "button": lang === "ar" ? "خيارات" :"Liste produits",
             "sections": [
               {
                     "title": lang === "ar" ? "اختار:" :"Choisir:",
@@ -92,7 +92,7 @@ exports.getFaq=(lang)=>{
             "button": lang === "ar" ? "خيارات" :"Options",
             "sections": [
               {
-                    "title": lang === "ar" ? "اختار:" :"Choisir:",
+                    "title": lang === "ar" ? "اختار:" :"Type de problèmes",
                     "rows": rows
                   },
                 ]

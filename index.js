@@ -56,7 +56,7 @@ app.post("/chat-bot",(req,res)=>{
                         getLang(message.from,({lang}) => {
                             sendMessage({...option,"message_type": "custom","custom": getProduits(lang)})
                         })
-                        backToMenu(option)
+                        // backToMenu(option)
                         break;
                     case "3":
                         getLang(message.from,({lang}) => {
@@ -120,5 +120,5 @@ function logToFile(message) {
 const backToMenu=(option)=>{
     setTimeout(()=>{
         sendMessage({...option,"message_type": "custom","custom": buttonMenu("fr") })
-    },300)
+    },2500)
 }
