@@ -89,7 +89,7 @@ exports.getFaq=(lang)=>{
             "text":lang === "ar" ? "الرجاء اختيار مشكلتك" : "Veuillez sélectionner votre problème"
           },
           "action": {
-            "button": lang === "ar" ? "خيارات" :"Options",
+            "button": lang === "ar" ? "خيارات" :"Type de problèmes",
             "sections": [
               {
                     "title": lang === "ar" ? "اختار:" :"Type de problèmes",

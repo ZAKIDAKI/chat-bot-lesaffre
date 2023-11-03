@@ -29,10 +29,10 @@ app.post("/chat-bot",(req,res)=>{
     }
 
     getLastMessage(message.from,({lastMessage})=>{
-        if(lastMessage.body === "option6"){
+        if(message.message_type==="reply" &&  lastMessage.body === "option6"){
             sendMessage({...option,"message_type": "text","text": getRating(message.text) })
             backToMenu(option)
-        }else if(lastMessage.body === "option5"){
+        }else if(message.message_type==="reply" && lastMessage.body === "option5"){
             sendMessage({...option,"message_type": "text","text": "Merci de nous avoir contacté, un téléconseiller prendra en charge votre réclamation dans les plus brefs délais." })
             backToMenu(option)
         }
