@@ -157,39 +157,30 @@ app.post("/chat-bot", (req, res) => {
               case "9":
                 sendMessage({
                   ...option,
-                  message_type: "text",
-                  text: "Siege social : Fes",
+                  message_type: "custom",
+                  custom: {
+                    type: "location",
+                    location: {
+                      longitude: -4.9830625,
+                      latitude: 34.0261875,
+                      name: "Lesaffre Maroc",
+                      address: "Situé dans : Quartier Industriel Sidi Brahim",
+                    },
+                  },
                 });
-                setTimeout(() => {
                   sendMessage({
                     ...option,
                     message_type: "custom",
                     custom: {
                       type: "location",
                       location: {
-                        longitude: -122.425332,
-                        latitude: 37.758056,
-                        name: "Siege social : Fes",
-                        address: "1 Hacker Way, Menlo Park, CA 94025",
+                        longitude:-7.5774499,
+                        latitude: 33.5989164,
+                        name: "Baking Centre Lesaffre Maroc",
+                        address: "92, Bd Batali Med Ben Mekki-Ex Gergovie, Casablanca 20100",
                       },
                     },
                   });
-                }, 500);
-                setTimeout(() => {
-                  sendMessage({
-                    ...option,
-                    message_type: "custom",
-                    custom: {
-                      type: "location",
-                      location: {
-                        longitude: -122.425332,
-                        latitude: 37.758056,
-                        name: "Siege social : Fes",
-                        address: "1 Hacker Way, Menlo Park, CA 94025",
-                      },
-                    },
-                  });
-                }, 1500);
                 break;
 
               default:
