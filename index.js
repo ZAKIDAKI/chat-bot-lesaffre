@@ -164,12 +164,14 @@ app.post("/chat-bot", (req, res) => {
                   sendMessage({
                     ...option,
                     message_type: "custom",
-                    type: "location",
-                    location: {
-                      longitude: -122.425332,
-                      latitude: 37.758056,
-                      name: "Siege social : Fes",
-                      address: "1 Hacker Way, Menlo Park, CA 94025",
+                    custom: {
+                      type: "location",
+                      location: {
+                        longitude: -122.425332,
+                        latitude: 37.758056,
+                        name: "Siege social : Fes",
+                        address: "1 Hacker Way, Menlo Park, CA 94025",
+                      },
                     },
                   });
                 }, 500);
@@ -177,12 +179,14 @@ app.post("/chat-bot", (req, res) => {
                   sendMessage({
                     ...option,
                     message_type: "custom",
-                    type: "location",
-                    location: {
-                      longitude: -122.425332,
-                      latitude: 37.758056,
-                      name: "Siege",
-                      address: "1 Hacker Way, Menlo Park, CA 94025",
+                    custom: {
+                      type: "location",
+                      location: {
+                        longitude: -122.425332,
+                        latitude: 37.758056,
+                        name: "Siege social : Fes",
+                        address: "1 Hacker Way, Menlo Park, CA 94025",
+                      },
                     },
                   });
                 }, 1500);
