@@ -16,6 +16,7 @@ const {
 const { getProducts, getOneProduct } = require("./controller/product");
 const { ranting, getRating } = require("./utlis/ranting");
 const { getLastMessage } = require("./utlis/messages");
+const { setTimeout } = require("timers/promises");
 app.use(express.json());
 
 app.get("/leads", async (req, res) => {
@@ -159,6 +160,32 @@ app.post("/chat-bot", (req, res) => {
                   message_type: "text",
                   text: "Siege social : Fes",
                 });
+                setTimeout(() => {
+                  sendMessage({
+                    ...option,
+                    message_type: "custom",
+                    type: "location",
+                    location: {
+                      longitude: -122.425332,
+                      latitude: 37.758056,
+                      name: "Siege social : Fes",
+                      address: "1 Hacker Way, Menlo Park, CA 94025",
+                    },
+                  });
+                }, 500);
+                setTimeout(() => {
+                  sendMessage({
+                    ...option,
+                    message_type: "custom",
+                    type: "location",
+                    location: {
+                      longitude: -122.425332,
+                      latitude: 37.758056,
+                      name: "Siege",
+                      address: "1 Hacker Way, Menlo Park, CA 94025",
+                    },
+                  });
+                }, 1500);
                 break;
 
               default:
